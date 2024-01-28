@@ -24,7 +24,7 @@ async function asyncReduce<A extends Array<unknown> | ReadonlyArray<unknown>>(
 async function asyncReduce<
   A extends Array<unknown> | ReadonlyArray<unknown>,
   I extends unknown,
->(array: A, callback: AsyncReduceCallback<A, I>, initialValue?: I): Promise<I>;
+>(array: A, callback: AsyncReduceCallback<A, I>, initialValue: I): Promise<I>;
 
 // Implementation
 async function asyncReduce<
