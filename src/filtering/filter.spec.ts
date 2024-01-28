@@ -27,6 +27,15 @@ describe('asyncFilter', () => {
     );
     expect(filtered).toEqual([1, 3]);
   });
+  it('should throw a typescript error if type narrowing via generics does not extend original array type', async () => {
+    const orig = [1, 2, 3] as const;
+    // @ts-expect-error
+    const filtered = await asyncFilter<typeof orig, 1 | 3 | 4>(
+      orig,
+      async (el) => el !== 2
+    );
+    expect(filtered).toEqual([1, 3]);
+  });
   it('should support async code within the predicate', async () => {
     const asyncAction = async (value: number) => {
       await wait(5);
@@ -41,7 +50,7 @@ describe('asyncFilter', () => {
   });
   it('should execute callbacks in parallel', async () => {
     const spyFunction = jest.fn();
-    const orig = ['PRIMO', 'SECONDO', 'TERZO'];
+    const orig = ['FIRST', 'SECOND', 'THIRD'];
     const mapped = await asyncFilter(orig, async (el, index) => {
       let include = false;
       switch (index) {
@@ -62,9 +71,9 @@ describe('asyncFilter', () => {
       return include;
     });
     expect(spyFunction).toHaveBeenCalledTimes(3);
-    expect(spyFunction).toHaveBeenNthCalledWith(1, 'SECONDO');
-    expect(spyFunction).toHaveBeenNthCalledWith(2, 'TERZO');
-    expect(spyFunction).toHaveBeenNthCalledWith(3, 'PRIMO');
-    expect(mapped).toEqual(['PRIMO']);
+    expect(spyFunction).toHaveBeenNthCalledWith(1, 'SECOND');
+    expect(spyFunction).toHaveBeenNthCalledWith(2, 'THIRD');
+    expect(spyFunction).toHaveBeenNthCalledWith(3, 'FIRST');
+    expect(mapped).toEqual(['FIRST']);
   });
 });
