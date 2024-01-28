@@ -1,16 +1,17 @@
+import { ElementOf } from '../utils/typescript';
 import type { AsyncMapCallback } from './map';
 
 async function asyncSerialMap<
   A extends Array<unknown> | ReadonlyArray<unknown>,
   ME,
-  E = A extends Array<infer T> | ReadonlyArray<infer T> ? T : never,
->(
-  array: Array<E> | ReadonlyArray<E>,
-  callback: AsyncMapCallback<E, ME>
-): Promise<ME[]> {
+>(array: A, callback: AsyncMapCallback<A, ME>): Promise<ME[]> {
   const results: ME[] = [];
   for (const [index, element] of array.entries()) {
-    const callbackResult = await callback(element, index, array);
+    const callbackResult = await callback(
+      element as ElementOf<A>,
+      index,
+      array
+    );
     results.push(callbackResult);
   }
   return results;

@@ -1,18 +1,18 @@
-type AsyncMapCallback<E, ME> = (
-  element: E,
+import { ElementOf } from '../utils/typescript';
+
+type AsyncMapCallback<A extends Array<unknown> | ReadonlyArray<unknown>, ME> = (
+  element: ElementOf<A>,
   index: number,
-  array: Array<E> | ReadonlyArray<E>
+  array: A
 ) => Promise<ME>;
 
-async function asyncMap<
-  A extends Array<unknown> | ReadonlyArray<unknown>,
-  ME,
-  E = A extends Array<infer T> | ReadonlyArray<infer T> ? T : never,
->(
-  array: Array<E> | ReadonlyArray<E>,
-  callback: AsyncMapCallback<E, ME>
+async function asyncMap<A extends Array<unknown> | ReadonlyArray<unknown>, ME>(
+  array: A,
+  callback: AsyncMapCallback<A, ME>
 ): Promise<ME[]> {
-  const promisesArray = array.map(callback);
+  const promisesArray = array.map((el, index) =>
+    callback(el as ElementOf<A>, index, array)
+  );
   return Promise.all(promisesArray);
 }
 
