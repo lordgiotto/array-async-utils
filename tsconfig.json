@@ -4,7 +4,7 @@
     "target": "ES2019",
     "moduleResolution": "Node",
     "declaration": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     // TypeChecking
