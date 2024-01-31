@@ -17,9 +17,19 @@ Small set of utility functions to perform async array mapping, filtering and red
 
 ## How to install
 
-Not published yet...
+```
+  npm install array-async-utils
+```
+
+or
+
+```
+  yarn add array-async-utils
+```
 
 ## Usage
+
+These funcitons accepts the input array as first paramenter, while the arguments, types and returned value resemble as much as possible the ones of the equivalent Array method.
 
 ### asyncMap
 
@@ -203,5 +213,6 @@ const reducedValue = await asyncReduce<typeof array, Record<string, number>>(
   },
   {}
 );
-// ^^^ callback will expect Promise<number> return type; initialValue, accumulator and reducedValue will be of type number.
+// ^^^ callback will expect Promise<Record<string, number>> return type;
+// initialValue, accumulator and reducedValue will be of type Record<string, number>.
 ```
