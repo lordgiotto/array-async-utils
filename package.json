@@ -39,6 +39,13 @@
     "fix:lint": "eslint ./src --fix",
     "fix:prettier": "prettier -u --write ."
   },
+  "files": [
+    "README.md",
+    "CHANGELOG.md",
+    "/dist",
+    "/src",
+    "!/src/**/*.spec.ts"
+  ],
   "devDependencies": {
     "@types/jest": "^29.5.11",
     "@typescript-eslint/eslint-plugin": "^6.19.0",
