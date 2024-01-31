@@ -1,11 +1,27 @@
 {
   "name": "array-async-utils",
   "version": "1.0.0",
-  "description": "Array map, filter, flatMap, etc. with async callback and predicate",
+  "description": "Array map, flatMap, filter, reduce, etc. with async callback and predicate",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "author": "Lorenzo Zottar <lordgiotto@gmail.com>",
   "license": "MIT",
+  "keywords": [
+    "array",
+    "async",
+    "map",
+    "flatMap",
+    "filter",
+    "reduce"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lordgiotto/array-async-utils"
+  },
+  "bugs": {
+    "url": "https://github.com/lordgiotto/array-async-utils/issues"
+  },
+  "homepage": "https://github.com/lordgiotto/array-async-utils/",
   "scripts": {
     "build": "run-p build:*",
     "build:cjs": "tsc -p ./tsconfig.build.json --module commonJS --outDir ./dist/cjs",
