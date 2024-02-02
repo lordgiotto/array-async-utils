@@ -1,4 +1,8 @@
-<h1>Array Async Utils</h1>
+<h1 id="top">Array Async Utils</h1>
+
+[![NPM Version](https://img.shields.io/npm/v/array-async-utils)](https://www.npmjs.com/package/array-async-utils)
+![GitHub License](https://img.shields.io/github/license/lordgiotto/array-async-utils)
+[![npm bundle size](https://img.shields.io/bundlephobia/min/array-async-utils)](https://bundlephobia.com/package/array-async-utils)
 
 Small set of utility functions to perform async array mapping, filtering and reducing.
 
@@ -17,11 +21,13 @@ Small set of utility functions to perform async array mapping, filtering and red
 
 ## How to install
 
+Simply install the `array-async-utils` from npm.
+
+You can use one of the following commands, or the equivalent command of the package manager of your choice.
+
 ```
   npm install array-async-utils
 ```
-
-or
 
 ```
   yarn add array-async-utils
@@ -65,6 +71,8 @@ const mappedArray = await asyncMap<typeof array, MappedElement>(
 // ^^^ callback will expect Promise<MappedElement> return type, and mappedArray will be of type MappedElement[]
 ```
 
+[(^ back to index)](#top)
+
 ### asyncSerialMap
 
 Same as `asyncMap`, but async callbacks are executed in series: each one is executed when the previous is finished.
@@ -107,6 +115,8 @@ const mappedArray = await asyncMap<typeof array, MappedElement>(
 // ^^^ callback will expect Promise<MappedElement> return type, and mappedArray will be of type MappedElement[]
 ```
 
+[(^ back to index)](#top)
+
 ### asyncFlatMap
 
 Same behaviour as Array.flatMap, but supports an async callback: all async callbacks are executed in parallel.
@@ -140,6 +150,8 @@ const mappedArray = await asyncFlatMap<typeof array, MappedElement>(
 );
 // ^^^ callback will expect Promise<MappedElement | MappedElement[]> return type, and mappedArray will be of type MappedElement[]
 ```
+
+[(^ back to index)](#top)
 
 ### asyncFilter
 
@@ -176,6 +188,8 @@ const filteredArray = await asyncFilter<typeof array, number>(
 );
 // ^^^ filteredArray will be of type number[]
 ```
+
+[(^ back to index)](#top)
 
 ### asyncReduce
 
@@ -216,3 +230,5 @@ const reducedValue = await asyncReduce<typeof array, Record<string, number>>(
 // ^^^ callback will expect Promise<Record<string, number>> return type;
 // initialValue, accumulator and reducedValue will be of type Record<string, number>.
 ```
+
+[(^ back to index)](#top)
