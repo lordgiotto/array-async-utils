@@ -42,9 +42,7 @@
   "files": [
     "README.md",
     "CHANGELOG.md",
-    "/dist",
-    "/src",
-    "!/src/**/*.spec.ts"
+    "/dist"
   ],
   "devDependencies": {
     "@types/jest": "^29.5.11",
