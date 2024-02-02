@@ -1,6 +1,6 @@
 {
   "name": "array-async-utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Array map, flatMap, filter, reduce, etc. with async callback and predicate",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
